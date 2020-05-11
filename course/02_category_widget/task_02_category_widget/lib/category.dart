@@ -17,6 +17,10 @@ class Category extends StatelessWidget {
   /// the UI, and the icon that represents it (e.g. a ruler).
   // TODO: You'll need the name, color, and iconLocation from main.dart
   const Category();
+  static const categoryName = 'Cake';
+  static const categoryIcon = Icons.cake;
+  static const categoryColor = Colors.green;
+  static const categoryHeight = 100.0;
 
   /// Builds a custom widget that shows [Category] information.
   ///
@@ -28,6 +32,42 @@ class Category extends StatelessWidget {
   // See https://docs.flutter.io/flutter/material/Theme-class.html
   Widget build(BuildContext context) {
     // TODO: Build the custom widget here, referring to the Specs.
-    return Container();
+    return Container(
+      height: categoryHeight,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(50.0),
+        highlightColor: categoryColor,
+        splashColor: Colors.green,
+        onTap: () {
+          print('I was tapped');
+        },
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(right: 16.0),
+                child: Icon(
+                  categoryIcon,
+                  size: 60.0,
+                ),
+              ),
+              Center(
+                child: Text(
+                  categoryName,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.display1.copyWith(
+                        color: Colors.black,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
